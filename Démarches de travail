@@ -1,16 +1,23 @@
-1. Définir un objectif précis et mesurable
 2. EDA (Exploratory Data Analysis)
+    Définir un objectif précis et mesurable
+    
     Analyse de la forme
         identification de la target
         Nombre de ligne et de colonnes
         Types de variables
         Identificationes valeurs manquantes
+
     Analyse du fond
         Visualisation de la target (Histogramme / Boxplot)
         Compréhension des différentes variables (Internet)
         Visualisation dss relations features-target (Histogramme / Boxplot)
         identifications des outliers
-3. Pre-processing
+        Décrivez la base de données sur le plan univarié. Cela implique de savoir à quoi ressemble l'individu moyen de la table, comment les autres individus se comparent à celui-ci, et de connaître les caractéristiques telles que la moyenne, l'écart type, le mode et la variance.
+        Il est également essentiel de comprendre les corrélations entre les différentes variables quantitatives (Spearson, Spearman, Kendall), les variables qualitatives (chi^2) et entre les variables quantitatives et qualitatives (ANOVA, test de Student, Oscar Walisse, Wilcoxon).3. Pre-processing
+    
+    Analyse multivarié
+        mettre en place un ACP sur les données quanti(pour analyser le profil des individus pour la base de données)
+    
     Création du train et du test set
     Elimination des NAN
     Encodage
@@ -24,3 +31,52 @@
     Optimisation avec GridSearchCV
     (Optionnel) Analyse des erreurs et retours au EDA
     Learning Curve et prise de décision
+
+----------------------------------------------------------------------------------------------------------------
+#Importation des bibliothèques
+#Importation du dataframe
+#Affichage des premières lignes du tableau
+#Analyse de la dimension de la BD
+#Analyse des types  de variables dans la BD
+#Analyse des données manquantes(interprèter et plutard essayer de les corrigés)
+
+##Analyse descriptive Univariés
+    #Analyse descriptive du jeu de données
+        df.describe()
+    #description des variables qualitatives
+        df.describe(include="object")
+    #Analyse descriptive des variables quantitatives
+            Test de Pearson
+            Test de Spearman
+            Test de Kendall
+        sns.boxplot(data=df)
+    #Analyse de la normalité(création d'un histogramme et d'un test de normalité pour chaque variable)
+    
+    #Analyse des variables qualitatives
+            Test du Khi-deux
+            Test de Cramer
+            Test de Tschuprow
+    avec un barplot : sns.countplot(df['variable_qualitative'])
+    #creation d'un tableu de fréquence
+    #création d'un diagramme circulaire pour le tableau de fréquence
+
+##Analyse descriptive Bivariés
+    sns.pairplot(df)
+    #obtenir le tableau de corrélation
+        coor_matrix = df.corr()
+    #Visualisation la matrice de corrélation (calcul des p-values pour chaque paire de variables)
+    sns.heatmap(coor_matrix, annot=True, cmap='Y1GnBu')
+    # Analyse des boxplot Bivariés(pour voir la relation entre les variables )
+    # Confirmer l'analyse par des tests statistiques
+
+##Analyse multivariés avec l'ACP
+    Séparation des variables
+    Standardisation des variables
+    # Analyse des valeurs propres
+    #Scree plot pour choisir le nombre de composantes principales
+
+
+
+
+    
+    
